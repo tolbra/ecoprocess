@@ -3,6 +3,8 @@ import { Card } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
 
 export function Documents() {
+  const pdfUrl = `${import.meta.env.BASE_URL}uved.pdf`;
+
   return (
     <section id="documents" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -26,9 +28,11 @@ export function Documents() {
                 <p className="text-sm text-gray-600 mb-4">
                   № KZ72UWT00011455 · 06.09.2023
                 </p>
-                <Button variant="outline" className="gap-2">
-                  <Download className="w-4 h-4" />
-                  Скачать PDF
+                <Button asChild variant="outline" className="gap-2">
+                  <a href={pdfUrl} download>
+                    <Download className="w-4 h-4" />
+                    Скачать PDF
+                  </a>
                 </Button>
               </div>
             </div>

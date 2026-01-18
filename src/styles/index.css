@@ -1,0 +1,8 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Плавная прокрутка для якорей */
+html {
+  scroll-behavior: smooth;
+}

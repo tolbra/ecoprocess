@@ -29,6 +29,8 @@ export function ProcessSteps() {
     },
   ];
 
+  const videoSrc = `${import.meta.env.BASE_URL}video.mp4`;
+
   return (
     <section id="process" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -90,8 +92,9 @@ export function ProcessSteps() {
             <div className="relative aspect-video bg-gray-900">
               <video
                 className="w-full h-full object-cover"
-                src="/videoplastic.mp4"
+                src={videoSrc}
                 controls
+                playsInline
                 preload="metadata"
                 
               />

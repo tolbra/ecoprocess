@@ -3,6 +3,8 @@ import { Button } from '@/app/components/ui/button';
 import { CheckCircle2, Package, Layers, Container, Shield, Film, CircleDot } from 'lucide-react';
 
 export function ProductsSection() {
+  const assetBase = import.meta.env.BASE_URL;
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -22,14 +24,14 @@ export function ProductsSection() {
   const products = [
     {
       title: 'Гранула LDPE — прозрачная/натуральная',
-      image: 'white.jpeg',
+      image: `${assetBase}white.jpeg`,
       description: 'Прозрачная гранула высокого качества для производства упаковочных материалов',
       color: 'bg-blue-50',
       buttonColor: 'bg-blue-600 hover:bg-blue-700',
     },
     {
       title: 'Гранула LDPE — чёрная',
-      image: 'black.jpeg',
+      image: `${assetBase}black.jpeg`,
       description: 'Чёрная гранула для производства технических изделий',
       color: 'bg-gray-50',
       buttonColor: 'bg-gray-800 hover:bg-gray-900',

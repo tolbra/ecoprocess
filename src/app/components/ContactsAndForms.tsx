@@ -9,6 +9,11 @@ import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 export function ContactsAndForms() {
+  const addressLink = 'https://2gis.kz/almaty/geo/9430047405839248/76.990567,43.431536';
+  const addressLabel = 'Улица Алтын Орда, 14д';
+  const mapEmbedSrc =
+    'https://www.google.com/maps?q=43.431536,76.990567&z=16&output=embed';
+
   const [supplyForm, setSupplyForm] = useState({
     name: '',
     phone: '',
@@ -82,17 +87,46 @@ export function ContactsAndForms() {
                 <MapPin className="w-6 h-6 text-purple-700" />
               </div>
               <p className="text-sm text-gray-600 mb-2">Адрес</p>
-              <p className="font-medium">Almaty, Kazakhstan</p>
+              <a
+                href={addressLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:text-blue-600 transition-colors"
+              >
+                {addressLabel}
+              </a>
             </Card>
           </div>
 
           {/* Карта (заглушка) */}
           <div className="rounded-lg overflow-hidden shadow-lg">
-            <div className="bg-gray-200 h-64 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Almaty, Kazakhstan</p>
+            <iframe
+              title={`Карта: ${addressLabel}`}
+              src={mapEmbedSrc}
+              className="w-full h-64 border-0"
+              loading="lazy"
+              allowFullScreen
+            />
+            <div className="bg-white px-4 py-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-t">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-5 h-5 text-purple-700 mt-0.5" />
+                <div>
+                  <p className="text-sm text-gray-600">Адрес</p>
+                  <a
+                    href={addressLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium hover:text-blue-600 transition-colors"
+                  >
+                    {addressLabel}
+                  </a>
+                </div>
               </div>
+              <Button asChild variant="outline" className="w-full sm:w-auto">
+                <a href={addressLink} target="_blank" rel="noopener noreferrer">
+                  Открыть в 2GIS
+                </a>
+              </Button>
             </div>
           </div>
         </div>

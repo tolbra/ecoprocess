@@ -14,6 +14,23 @@ export function ContactsAndForms() {
   const mapEmbedSrc =
     'https://www.google.com/maps?q=43.431536,76.990567&z=16&output=embed';
 
+  const materialLabels: Record<string, string> = {
+    'ldpe-film': 'ПВД (LDPE) плёнка',
+    stretch: 'Стрейч-плёнка',
+    'transparent-color': 'Прозрачная/цветная плёнка',
+    bags: 'Полиэтиленовые пакеты',
+    'production-waste': 'Производственный брак',
+    'warehouse-waste': 'Отходы со складов',
+    'big-bag-liners': 'Вкладыши от биг-бегов',
+    other: 'Другое',
+  };
+
+  const granuleLabels: Record<string, string> = {
+    transparent: 'Прозрачная',
+    black: 'Чёрная',
+    mix: 'Микс',
+  };
+
   const [supplyForm, setSupplyForm] = useState({
     name: '',
     phone: '',
@@ -33,7 +50,15 @@ export function ContactsAndForms() {
   const handleSupplySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const message = `Заявка на сдачу сырья:\\n\\nИмя: ${supplyForm.name}\\nТелефон: ${supplyForm.phone}\\nВид сырья: ${supplyForm.materialType}\\nОбъём: ${supplyForm.volume}\\nКомментарий: ${supplyForm.comment || 'Нет'}`;
+    const message = [
+      'Заявка на сдачу сырья',
+      '',
+      `Имя: ${supplyForm.name}`,
+      `Телефон: ${supplyForm.phone}`,
+      `Вид сырья: ${materialLabels[supplyForm.materialType] || 'Не указано'}`,
+      `Объём: ${supplyForm.volume || 'Не указано'}`,
+      `Комментарий: ${supplyForm.comment || 'Нет'}`,
+    ].join('\n');
     
     const whatsappUrl = `https://wa.me/77056890629?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -44,7 +69,15 @@ export function ContactsAndForms() {
   const handleBuySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const message = `Заявка на покупку гранулы:\\n\\nИмя/Компания: ${buyForm.name}\\nТелефон: ${buyForm.phone}\\nТип гранулы: ${buyForm.granuleType}\\nОбъём: ${buyForm.volume}\\nКомментарий: ${buyForm.comment || 'Нет'}`;
+    const message = [
+      'Заявка на покупку гранулы',
+      '',
+      `Имя/Компания: ${buyForm.name}`,
+      `Телефон: ${buyForm.phone}`,
+      `Тип гранулы: ${granuleLabels[buyForm.granuleType] || 'Не указано'}`,
+      `Объём: ${buyForm.volume || 'Не указано'}`,
+      `Комментарий: ${buyForm.comment || 'Нет'}`,
+    ].join('\n');
     
     const whatsappUrl = `https://wa.me/77056890629?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
